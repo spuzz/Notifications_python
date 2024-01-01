@@ -14,9 +14,10 @@ class Comment(CommentBase):
     
     owner_id: str
     post_id: str
+    owner_name: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class LikeBase(BaseModel):
@@ -31,9 +32,10 @@ class Like(LikeBase):
     id: int
     owner_id: str
     post_id: str
+    owner_name: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
     
 class UserPostBase(BaseModel):
@@ -52,7 +54,7 @@ class UserPost(UserPostBase):
     likes: list[Like] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class UserBase(BaseModel):
@@ -71,7 +73,7 @@ class User(UserBase):
     user_likes: list[Like] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class NotificationBase(BaseModel):
@@ -87,4 +89,4 @@ class NotificationCreate(NotificationBase):
 class Notification(NotificationBase):
 
     class Config:
-        orm_mode = True
+        from_attributes = True

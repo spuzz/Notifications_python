@@ -78,3 +78,8 @@ def test_read_userpost():
     response = client.get("/userposts/b1638f970c3ddd528671df76c4dcf13e")
     
     assert response.status_code == 200
+
+def test_sentiment_userpost():
+    response = client.get("/userposts/sentiment/c4cfbe322bb834ada81719036f9b287b")
+    
+    assert response.status_code == 200

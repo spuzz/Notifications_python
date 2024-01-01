@@ -1,7 +1,7 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from database import Base
+from database.database import Base
 
 
 class User(Base):
@@ -35,6 +35,8 @@ class Comment(Base):
     post_id = Column(String, ForeignKey("userposts.id"))
     owner_id = Column(String, ForeignKey("users.id"))
 
+    owner_name = Column(String)
+
     user_posts = relationship("UserPost", back_populates="comments")
     owner = relationship("User", back_populates="user_comments")
 
@@ -45,6 +47,8 @@ class Like(Base):
 
     owner_id = Column(String, ForeignKey("users.id"))
     post_id = Column(String, ForeignKey("userposts.id"))
+
+    owner_name = Column(String)
 
     user_posts = relationship("UserPost", back_populates="likes")
     owner = relationship("User", back_populates="user_likes")
