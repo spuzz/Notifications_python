@@ -44,7 +44,7 @@ logger.info("Application started succesfully")
 # Single top level endpoint for uplaoding notification stream json file
 # Will automatically create all relevant users, posts, likes and comments in database
 @app.post("/uploadfile/")
-async def upload_json_feed(upload_file: UploadFile = File(...), db: Session = Depends(get_db)):
+def upload_json_feed(upload_file: UploadFile = File(...), db: Session = Depends(get_db)):
     json_data = json.load(upload_file.file)
     for i in json_data:
         try:
