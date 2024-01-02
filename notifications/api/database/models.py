@@ -1,7 +1,14 @@
+"""\
+Database models for notification feed app
+
+database is built to allow users to both post and like/comments on others 
+However for this example only the "default" user will have posts
+
+"""
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from database.database import Base
+from api.database.database import Base
 
 
 class User(Base):
@@ -13,7 +20,6 @@ class User(Base):
     user_posts = relationship("UserPost", back_populates="owner")
     user_comments = relationship("Comment", back_populates="owner")
     user_likes = relationship("Like", back_populates="owner")
-
 
 class UserPost(Base):
     __tablename__ = "userposts"

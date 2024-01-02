@@ -1,10 +1,16 @@
-from pydantic import BaseModel
+"""\
+Pydantic schemas for fastapi and sqlalchemy integration with notification feed app
+
+
+"""
+
+from pydantic import BaseModel, ConfigDict
 
 
 class CommentBase(BaseModel):
     id: str
     commentText: str | None = None
-
+    model_config = ConfigDict(from_attributes=True)
 
 class CommentCreate(CommentBase):
     pass
@@ -16,12 +22,11 @@ class Comment(CommentBase):
     post_id: str
     owner_name: str
 
-    class Config:
-        from_attributes = True
+        
 
 
 class LikeBase(BaseModel):
-    pass
+    model_config = ConfigDict(from_attributes=True)
 
 
 class LikeCreate(LikeBase):
@@ -33,15 +38,13 @@ class Like(LikeBase):
     owner_id: str
     post_id: str
     owner_name: str
-
-    class Config:
-        from_attributes = True
+    
 
     
 class UserPostBase(BaseModel):
     id: str
     title: str | None = None
-
+    model_config = ConfigDict(from_attributes=True)
 
 class UserPostCreate(UserPostBase):
     pass
@@ -53,15 +56,13 @@ class UserPost(UserPostBase):
     comments: list[Comment] = []
     likes: list[Like] = []
 
-    class Config:
-        from_attributes = True
 
 
 class UserBase(BaseModel):
     id: str
     name: str
     avatar: str | None = None
-
+    model_config = ConfigDict(from_attributes=True)
 
 class UserCreate(UserBase):
     pass
@@ -72,8 +73,6 @@ class User(UserBase):
     user_comments: list[Comment] = []
     user_likes: list[Like] = []
 
-    class Config:
-        from_attributes = True
 
 
 class NotificationBase(BaseModel):
@@ -81,12 +80,11 @@ class NotificationBase(BaseModel):
     user: UserCreate
     post: UserPostCreate
     comment: CommentCreate | None = None
+    model_config = ConfigDict(from_attributes=True)
 
 class NotificationCreate(NotificationBase):
     pass
 
 
 class Notification(NotificationBase):
-
-    class Config:
-        from_attributes = True
+    pass

@@ -1,3 +1,14 @@
+"""\
+CRUD database access for notification feed app
+
+Tables:
+users
+posts
+comments
+likes
+
+"""
+
 from sqlalchemy.orm import Session
 
 import api.database.models as models, api.database.schemas as schemas
@@ -20,6 +31,7 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_user(db: Session, user: schemas.UserCreate):
+    # If no use user name was specified we add the name as "User"
     if user.name == "":
         user.name = "User"
     logger.debug(f"Creating user {user.id} in database")
