@@ -4,7 +4,7 @@
 
 Requirements: Full list of packages with version numbers used for development and testing can be found in notifications/requirements.txt
 <br>
-
+- python (3.11.1)
 - fastapi
 - pytest
 - sqlalchemy
