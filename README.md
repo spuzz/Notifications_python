@@ -27,6 +27,9 @@ The endpoint /sentiment/{post_id} will return text describing the estimated reac
 Run using "uvicorn main:app --reload" from the /notifications directory.
 <br>
 <br>
+Once running, full API spec can be accessed from 127.0.0.1:8000/docs 
+<br>
+<br>
 Unit tests written using pytest check the functionality of the API. These can be run using "pytest" in the notifications directory.
 <br>
 
