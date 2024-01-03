@@ -2,14 +2,16 @@
 ## Python and fastapi based application to process notifications and aggregate into a notification feed
 ### Creates a sqlite database to store the notification feed and aggregate by type and post. Uses deep learning sentiment analysis to estimate the reaction to a users post based on the notification feed comments.
 
-Requirements
+Requirements: Full list of packages with version numbers used for development and testing can be found in notifications/requirements.txt
+<br>
+- python (3.11.1)
 - fastapi
 - pytest
 - sqlalchemy
 - transformers (hugging face)
 - pytorch
 
-<br>
+
 Designed for a system with users able to both post and like/comment on other users posts. The current version assumes an incomplete database and will create a default user that all "posts" in the notification feed will be assigned and will create users/posts as the notification feed is parsed.
 <br>
 <br>
