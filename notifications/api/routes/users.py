@@ -2,6 +2,9 @@
 /user route endpoints
 
 Handles api calls to create and retrieve users
+
+Real world production system would use security and restriction on data retrieved by other users however, for this example
+the user data is accesible to all.
 """
 
 from fastapi import APIRouter
@@ -26,7 +29,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=409, detail="User already registered")
     return crud.create_user(db=db, user=user)
 
-@router.get("/{user_id}" )
+@router.get("/{user_id}" , response_model=schemas.User)
 def read_user(user_id: str, db: Session = Depends(get_db)):
     logger.info(f"Retrieve user {user_id}")
     db_user = crud.get_user(db, id=user_id)
